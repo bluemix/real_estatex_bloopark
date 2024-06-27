@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_complaint_ticket,complaint.ticket,model_complaint_ticket,base.group_user,1,1,1,1
+access_complaint_stage,complaint.stage,model_complaint_stage,base.group_user,1,1,1,1
+access_complaint_type,complaint.type,model_complaint_type,base.group_user,1,1,1,1

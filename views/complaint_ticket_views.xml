@@ -1,0 +1,82 @@
+<odoo>
+    <!--    ROOT MENU   -->
+    <menuitem id="menu_complaints_root" name="Complaints"
+              sequence="90"
+              web_icon="real_estatex_bloopark,static/description/icon.svg"
+              groups="base.group_no_one"/>
+
+    <!--    COMPLAINT.TICKET VIEWS  -->
+    <record id="complaint_tickets_view_tree" model="ir.ui.view">
+        <field name="name">complaint.ticket.tree</field>
+        <field name="model">complaint.ticket</field>
+        <field name="arch" type="xml">
+            <tree string="Tickets" multi_edit="1" sample="1" default_order="id">
+                <field name="name" string="Name"/>
+                <field name="user_id" optional="show" widget="many2one_avatar_user"
+                       options="{'no_quick_create': True}"/>
+                <field name="partner_id"
+                       widget="res_partner_many2one" optional="show"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="create_date" optional="hide" readonly="1" string="Creation Date"/>
+                <field name="write_date" optional="hide" readonly="1"/>
+                <field name="complaint_type_id" optional="show"/>
+                <field name="stage_id" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record id="complaint_ticket_view_form" model="ir.ui.view">
+        <field name="name">complaint.ticket.form</field>
+        <field name="model">complaint.ticket</field>
+        <field name="arch" type="xml">
+            <form string="Complaint Ticket">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1><field name="name" class="field_name" placeholder="e.g. No hot water"/></h1>
+                    </div>
+                    <group class="mb-0 mt-4">
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="user_id" class="field_user_id"
+                                   widget="many2one_avatar_user"/>
+                            <field name="complaint_type_id"/>
+                        </group>
+                        <group>
+                            <field name="partner_id" class="field_partner_id"
+                                   widget="res_partner_many2one"/>
+                            <label for="partner_email" string="Email"/>
+                            <div class="o_row o_row_readonly">
+                                <field name="partner_email" widget="email" string="email"/>
+                                <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
+                                      title="By saving this change, the customer email will also be updated."/>
+                            </div>
+                        </group>
+                    </group>
+                    <field name="description" class="oe-bordered-editor field_description"
+                           placeholder="Description of the ticket..."/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="complaint_ticket_action_main" model="ir.actions.act_window">
+        <field name="name">Complaints</field>
+        <field name="res_model">complaint.ticket</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No complaints reported yet. You will retrieve new complaints here once the users submit them.
+            </p>
+
+        </field>
+    </record>
+
+    <menuitem id="complaints_ticket_menu" name="All Complaints" action="complaint_ticket_action_main"
+              sequence="10" parent="real_estatex_bloopark.menu_complaints_root"/>
+</odoo>

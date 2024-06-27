@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="real_estatex_bloopark.model_complaint_ticket" model="ir.model">
+        <field name="website_form_access">True</field>
+        <field name="website_form_label">New Complaint</field>
+        <field name="website_form_default_field_id" ref="real_estatex_bloopark.field_complaint_ticket__description"/>
+    </record>
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>complaint.ticket</value>
+        <value eval="[
+            'name',
+            'description',
+            'partner_id',
+            'partner_name',
+            'partner_email',
+        ]"/>
+    </function>
+</odoo>
