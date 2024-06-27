@@ -25,6 +25,15 @@ class ComplaintTicket(models.Model):
     _primary_email = 'partner_email'
     _description = 'Complaint ticket'
 
+    def _default_stage_id(self):
+        COMPLAINT_STAGE = self.env['complaint.stage']
+        config_param_sudo = self.env['ir.config_parameter'].sudo()
+        default_stage_id = \
+            config_param_sudo.get_param('real_estatex_bloopark.stage_id',
+                                        COMPLAINT_STAGE.search([], limit=1))
+
+        return COMPLAINT_STAGE.search([('id', '=', default_stage_id)], limit=1)
+
     name = fields.Char(string='Subject', required=True, index=True, tracking=True)
 
     active = fields.Boolean(default=True)
@@ -32,7 +41,8 @@ class ComplaintTicket(models.Model):
 
     user_id = fields.Many2one('res.users', string='Assigned to')
 
-    stage_id = fields.Many2one('complaint.stage', string='Stage', index=True)
+    stage_id = fields.Many2one('complaint.stage', string='Stage', index=True,
+                               default=lambda self: self._default_stage_id())
 
     complaint_type_id = fields.Many2one('complaint.type', string='Type', tracking=True)
 

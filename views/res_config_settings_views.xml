@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="1"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="real_estatex" string="RealEstateX"
+                     data-key="realestatex">
+                    <h2>Stages</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-md-12 col-xs-12 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Default stage to be set when creating a new complaint ticket
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt8">
+                                        <field name="stage_id" class="o_light_label"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

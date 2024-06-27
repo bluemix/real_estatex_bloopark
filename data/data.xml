@@ -43,8 +43,10 @@
     <!--    Adding complaint types -->
     <record id="type_question" model="complaint.type">
         <field name="name">Question</field>
+        <field name="sequence">1</field>
     </record>
     <record id="type_incident" model="complaint.type">
         <field name="name">Issue</field>
+        <field name="sequence">2</field>
     </record>
 </odoo>

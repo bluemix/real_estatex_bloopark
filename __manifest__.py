@@ -35,6 +35,7 @@
         'views/complaint_ticket_views.xml',
         'views/complaint_stage_views.xml',
         'views/complaint_type_views.xml',
+        'views/res_config_settings_views.xml',
     ],
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',

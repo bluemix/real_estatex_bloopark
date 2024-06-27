@@ -19,3 +19,4 @@
 from . import complaint_type
 from . import complaint_ticket
 from . import complaint_stage
+from . import res_config_settings
