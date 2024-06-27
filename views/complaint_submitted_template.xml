@@ -9,10 +9,10 @@
                             <i class="fa fa-check-circle fa-1x text-success me-2" role="img" aria-label="Success"
                                title="Success"/>
                             <t t-if="ticket">
-                                <span>Your Complaint has being submitted, and an email is sent to you</span>
+                                <span>Your Complaint has being submitted, and an email will be sent to you</span>
                             </t>
                         </h1>
-                        <h1 class="text-center">Thank you for contacting us, we will respond to you soon!</h1>
+                        <h2 class="text-center">Thank you for contacting us, we will respond to you soon!</h2>
                     </div>
                     <div class="oe_structure"/>
                 </div>

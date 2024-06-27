@@ -29,10 +29,12 @@
     'depends': ['website', 'mail'],
     'data': [
         'security/ir.model.access.csv',
-        'data/complaints_data.xml',
+        'data/data.xml',
         'views/complaint_template.xml',
         'views/complaint_submitted_template.xml',
         'views/complaint_ticket_views.xml',
+        'views/complaint_stage_views.xml',
+        'views/complaint_type_views.xml',
     ],
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',

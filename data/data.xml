@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    used with the website form when submitting complaints   -->
+    <record id="real_estatex_bloopark.model_complaint_ticket" model="ir.model">
+        <field name="website_form_access">True</field>
+        <field name="website_form_label">New Complaint</field>
+        <field name="website_form_default_field_id" ref="real_estatex_bloopark.field_complaint_ticket__description"/>
+    </record>
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>complaint.ticket</value>
+        <value eval="[
+            'name',
+            'description',
+            'partner_id',
+            'partner_name',
+            'partner_email',
+        ]"/>
+    </function>
+
+    <!--    Adding stages-->
+    <!--    The "New" stage is automatically generated with a sequence number of 0 -->
+    <record id="stage_new" model="complaint.stage">
+        <field name="name">New</field>
+        <field name="sequence">0</field>
+    </record>
+    <record id="stage_in_review" model="complaint.stage">
+        <field name="name">In Review</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="stage_in_progress" model="complaint.stage">
+        <field name="name">In Progress</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="stage_solved" model="complaint.stage">
+        <field name="name">Solved</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="stage_dropped" model="complaint.stage">
+        <field name="name">Dropped</field>
+        <field name="sequence">4</field>
+    </record>
+
+    <!--    Adding complaint types -->
+    <record id="type_question" model="complaint.type">
+        <field name="name">Question</field>
+    </record>
+    <record id="type_incident" model="complaint.type">
+        <field name="name">Issue</field>
+    </record>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+
+    <!--    COMPLAINT.STAGE VIEWS  -->
+    <record id="complaint_stage_view_tree" model="ir.ui.view">
+        <field name="name">complaint.stage.tree</field>
+        <field name="model">complaint.stage</field>
+        <field name="arch" type="xml">
+            <tree string="Stages" default_order="sequence" create="false" delete="false" edit="false">
+                <field name="name"/>
+                <field name="active"/>
+                <field name="description"/>
+                <field name="sequence" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="complaint_stage_view_form" model="ir.ui.view">
+        <field name="name">complaint.stage.form</field>
+        <field name="model">complaint.stage</field>
+        <field name="arch" type="xml">
+            <form string="Complaint Stage">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group class="mb-0 mt-4">
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="name" class="field_name"/>
+                            <field name="sequence" class="field_name"/>
+                        </group>
+                    </group>
+                    <field name="description" class="oe-bordered-editor field_description"
+                           placeholder="Description of the stage..."/>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="complaint_stage_action_main" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="res_model">complaint.stage</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No stages created yet
+            </p>
+
+        </field>
+    </record>
+
+    <menuitem id="complaints_stages_menu" name="Stages" action="complaint_stage_action_main"
+              sequence="2" parent="real_estatex_bloopark.menu_complaints_root"/>
+</odoo>

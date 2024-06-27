@@ -16,9 +16,8 @@
 #    If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from odoo import models, fields, api
-from odoo.addons.iap.tools import iap_tools
-from odoo import api, Command, fields, models, tools, _
+
+from odoo import fields, models
 
 
 class ComplaintStage(models.Model):
