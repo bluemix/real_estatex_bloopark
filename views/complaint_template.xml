@@ -66,8 +66,7 @@
                                             </label>
                                             <div class="col-sm">
                                                 <input type="text" class="form-control s_website_form_input"
-                                                       name="name"
-                                                       required="true" id="complaint_3"/>
+                                                       name="name" required="true" id="complaint_3"/>
                                             </div>
                                         </div>
                                     </div>
@@ -77,10 +76,11 @@
                                             <label class="col-form-label col-sm-auto s_website_form_label "
                                                    style="width: 200px" for="complaint_4">
                                                 <span class="s_website_form_label_content">Description</span>
+                                                <span class="s_website_form_mark"> *</span>
                                             </label>
                                             <div class="col-sm">
                                                 <textarea type="text" class="form-control s_website_form_input"
-                                                          name="description" id="complaint_4" rows="5"/>
+                                                          name="description" id="complaint_4" rows="5" required="true"/>
                                             </div>
                                         </div>
                                     </div>
@@ -89,15 +89,22 @@
                                          data-visibility-between="">
                                         <div class="row s_col_no_resize s_col_no_bgcolor">
                                             <label class="col-form-label col-sm-auto s_website_form_label "
-                                                   style="width: 200px" for="o0x4gq3eqewel">
+                                                   style="width: 200px" for="complaint_5">
                                                 <span class="s_website_form_label_content">Complaint Type</span>
                                             </label>
                                             <div class="col-sm">
                                                 <select class="form-select s_website_form_input" name="Custom Text"
-                                                        id="o0x4gq3eqewel" style="">
-                                                    <option value="option_1">Question</option>
-                                                    <option value="option_2">Electrical Issue</option>
-                                                    <option value="option_3">Heating Issue</option>
+                                                        id="complaint_5" style="">
+                                                    <option value="option_general_question">General Question</option>
+                                                    <option value="option_billing_issue">Billing Issue</option>
+                                                    <option value="option_electrical_or_heating_issue">Electrical or
+                                                        Heating Issue</option>
+                                                    <option value="option_property_condition">Property Condition and
+                                                        Maintenance</option>
+                                                    <option value="option_neighborhood">Neighborhood and
+                                                        Environment</option>
+                                                    <option value="option_additional_services">Additional Services and
+                                                        Networking</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -107,12 +114,12 @@
                                          data-type="binary" data-name="Field">
                                         <div class="row s_col_no_resize s_col_no_bgcolor">
                                             <label class=" col-sm-auto s_website_form_label " style="width: 200px"
-                                                   for="complaint_5">
+                                                   for="complaint_6">
                                                 <span class="s_website_form_label_content">Attachment</span>
                                             </label>
                                             <div class="col-sm">
                                                 <input type="file" class="form-control s_website_form_input"
-                                                       name="Attachment" id="complaint_5"/>
+                                                       name="Attachment" id="complaint_6"/>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +132,7 @@
                                             </label>
                                             <div class="col-sm">
                                                 <input type="hidden" class="form-control s_website_form_input"
-                                                       id="complaint_6"/>
+                                                       id="complaint_7"/>
                                             </div>
                                         </div>
                                     </div>

@@ -12,7 +12,7 @@
                                 <span>Your Complaint has being submitted, and an email will be sent to you</span>
                             </t>
                         </h1>
-                        <h2 class="text-center">Thank you for contacting us, we will respond to you soon!</h2>
+                        <h4 class="text-center">Thank you for contacting us,<br/>we will respond to you soon!</h4>
                     </div>
                     <div class="oe_structure"/>
                 </div>

@@ -63,7 +63,9 @@ class ComplaintTicket(models.Model):
     partner_email = fields.Char(string='Customer Email', readonly=False)
     partner_name = fields.Char(string='Customer Name', readonly=False)
 
-    partner_id = fields.Many2one('res.partner', string='Customer', tracking=True)
+    partner_id = fields.Many2one('res.partner', string='Customer',
+                                 store=True,
+                                 compute='_compute_partner_id', tracking=True)
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -82,3 +84,11 @@ class ComplaintTicket(models.Model):
         )
         for rec in self:
             rec.with_context(force_send=True).message_post_with_template(email_template_id)
+
+    @api.depends('partner_email')
+    def _compute_partner_id(self):
+        for rec in self:
+            _partner = self.env['res.partner'].sudo().search([('email', '=', rec.partner_email)], limit=1)
+            rec.partner_id = _partner or rec.partner_id
+
+

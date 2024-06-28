@@ -11,10 +11,11 @@
             <field name="description">Sent automatically after a new complaint ticket is created</field>
             <field name="body_html" type="html">
                 <div>
-                    Dear <t t-out="object.partner_name or ''">Salman Khan</t>,<br/><br/>
+                    Dear <t t-out="object.partner_id.name or ''">Salman Khan</t>,<br/><br/>
                     A new complaint ticket is created for you: # <b><t t-out="object.id or ''">12345</t></b><br/>
-                    Please, give us some time to process your complaint.<br/>
-                    <br/>Best Regards<br/><br/>
+                    Please, give us some time to process your complaint.<br/><br/>
+                    Best Regards,<br/>
+                    Your RealEstateX Team.<br/>
                 </div>
             </field>
         </record>
