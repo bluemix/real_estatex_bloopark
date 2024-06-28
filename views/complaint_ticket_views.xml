@@ -10,7 +10,7 @@
         <field name="name">complaint.ticket.tree</field>
         <field name="model">complaint.ticket</field>
         <field name="arch" type="xml">
-            <tree string="Tickets" multi_edit="1" sample="1" default_order="id">
+            <tree string="Tickets" default_order="id">
                 <field name="name" string="Name"/>
                 <field name="user_id" optional="show" widget="many2one_avatar_user"
                        options="{'no_quick_create': True}"/>
@@ -103,6 +103,9 @@
         <field name="name">Complaints</field>
         <field name="res_model">complaint.ticket</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="context">{
+            'created_from_backend': True,
+        }</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No complaints reported yet. You will retrieve new complaints here once the users submit them.

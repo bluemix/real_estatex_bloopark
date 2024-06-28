@@ -10,12 +10,14 @@ class ResConfigSettings(models.TransientModel):
         return self.env['complaint.stage'].search([('sequence', '=', 0)], limit=1) \
             or self.env['complaint.stage'].search([], limit=1)
 
-    stage_id = fields.Many2one(
-        'complaint.stage',
-        'Default Complaint Stage',
-        config_parameter='real_estatex_bloopark.stage_id',
-        default=lambda self: self._default_stage_id(),
-        help='Default stage used when creating new complain tickets')
+    stage_id = fields.Many2one('complaint.stage', 'Default Complaint Stage',
+                               config_parameter='real_estatex_bloopark.stage_id',
+                               default=lambda self: self._default_stage_id(),
+                               help='Default stage used when creating new complain tickets')
+
+    assignee = fields.Many2one('res.users', 'Default Ticket Assignee',
+                               config_parameter='real_estatex_bloopark.assignee',
+                               help='Default responsible when a new complaint ticket is created')
 
     # @api.model
     # def get_values(self):

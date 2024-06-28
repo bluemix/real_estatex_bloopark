@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="real_estatex_bloopark.mail_template_complaint_created" model="mail.template">
+            <field name="name">Complaint Created</field>
+            <field name="model_id" ref="real_estatex_bloopark.model_complaint_ticket"/>
+            <field name="subject">RealEstateX: Complaint Received</field>
+            <field name="email_from">{{ object.user_id.email_formatted }}</field>
+            <field name="email_to">{{ object.partner_email }}</field>
+            <field name="auto_delete" eval="False"/>
+            <field name="description">Sent automatically after a new complaint ticket is created</field>
+            <field name="body_html" type="html">
+                <div>
+                    Dear <t t-out="object.partner_name or ''">Salman Khan</t>,<br/><br/>
+                    A new complaint ticket is created for you: # <b><t t-out="object.id or ''">12345</t></b><br/>
+                    Please, give us some time to process your complaint.<br/>
+                    <br/>Best Regards<br/><br/>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
