@@ -75,21 +75,27 @@ class ComplaintTicket(models.Model):
 
         _tickets = super(ComplaintTicket, self).create(vals_list)
         for _ticket in _tickets:
-            _ticket.send_email_complaint_received()
+            _ticket.send_email()
         return _tickets
 
-    def send_email_complaint_received(self):
-        """ will send an email once a new complaint is created """
-        email_template_id = self.env['ir.model.data']._xmlid_to_res_id(
-            'real_estatex_bloopark.mail_template_complaint_created', raise_if_not_found=False
-        )
+    @api.onchange('stage_id')
+    def send_email(self):
+        """ will send an email based on the stage of the ticket """
         for rec in self:
-            rec.with_context(force_send=True).message_post_with_template(email_template_id)
+            if rec.stage_id.sequence == 0:
+                email_template_id = self.env['ir.model.data']._xmlid_to_res_id(
+                    'real_estatex_bloopark.mail_template_complaint_created', raise_if_not_found=False
+                )
+                rec.with_context(force_send=True).message_post_with_template(email_template_id)
+            elif rec.stage_id.sequence == 4 or rec.stage_id.sequence == 3:
+                email_template_id = self.env['ir.model.data']._xmlid_to_res_id(
+                    'real_estatex_bloopark.mail_template_complaint_finished', raise_if_not_found=False
+                )
+                rec.with_context(force_send=True).message_post_with_template(email_template_id)
 
     @api.depends('partner_email')
     def _compute_partner_id(self):
         for rec in self:
             _partner = self.env['res.partner'].sudo().search([('email', '=', rec.partner_email)], limit=1)
             rec.partner_id = _partner or rec.partner_id
-
 

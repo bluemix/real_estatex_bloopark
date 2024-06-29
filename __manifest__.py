@@ -31,6 +31,7 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'data/complaint_received_mail_template.xml',
+        'data/complaint_finished_template.xml',
         'views/complaint_template.xml',
         'views/complaint_submitted_template.xml',
         'views/complaint_ticket_views.xml',

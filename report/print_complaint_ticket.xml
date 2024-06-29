@@ -15,7 +15,6 @@
     <template id="print_complaint_ticket">
         <t t-call="web.basic_layout">
             <t t-set="company" t-value="docs.env.company"/>
-            <!--            <t t-set="skip_headers" t-value="True"/>-->
             <t t-foreach="docs" t-as="doc">
                 <t t-call="l10n_din5008.external_layout_din5008">
                     <br/>
