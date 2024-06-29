@@ -6,6 +6,19 @@
               groups="base.group_no_one"/>
 
     <!--    COMPLAINT.TICKET VIEWS  -->
+    <record id="complaint_ticket_search_view" model="ir.ui.view">
+        <field name="name">complaint.ticket.search</field>
+        <field name="model">complaint.ticket</field>
+        <field name="arch" type="xml">
+            <search string="Complaints Search">
+                <field name="name"/>
+                <field name="complaint_type_id"/>
+                <field name="user_id"/>
+
+                <filter string="My Tickets" domain="[('user_id','=',uid)]" name="my_tickets"/>
+            </search>
+        </field>
+    </record>
     <record id="complaint_tickets_view_tree" model="ir.ui.view">
         <field name="name">complaint.ticket.tree</field>
         <field name="model">complaint.ticket</field>
@@ -47,8 +60,8 @@
                         <group>
                             <field name="partner_id" readonly="True"/>
                             <field name="partner_email" widget="email" readonly="True"/>
-                            <field name="partner_name"  readonly="True"/>
-                            <field name="partner_address"  readonly="True"/>
+                            <field name="partner_name" readonly="True"/>
+                            <field name="partner_address" readonly="True"/>
                         </group>
                     </group>
                     <field name="description" class="oe-bordered-editor field_description"
@@ -99,8 +112,11 @@
         <field name="name">Complaints</field>
         <field name="res_model">complaint.ticket</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="complaint_ticket_search_view"/>
         <field name="context">{
             'created_from_backend': True,
+            'search_default_my_tickets': True,
+            'default_user_id': uid,
         }</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
