@@ -26,7 +26,7 @@
     'author': 'Abdulmomen Bsruki',
     'maintainer': 'Abdulmomen Bsruki',
     'website': 'bluemix.me',
-    'depends': ['website', 'mail'],
+    'depends': ['website', 'mail', 'l10n_din5008'],
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
@@ -37,6 +37,7 @@
         'views/complaint_stage_views.xml',
         'views/complaint_type_views.xml',
         'views/res_config_settings_views.xml',
+        'report/print_complaint_ticket.xml',
     ],
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',

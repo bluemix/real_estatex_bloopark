@@ -62,6 +62,7 @@ class ComplaintTicket(models.Model):
 
     partner_email = fields.Char(string='Customer Email', readonly=False)
     partner_name = fields.Char(string='Customer Name', readonly=False)
+    partner_address = fields.Char(string='Customer Address')
 
     partner_id = fields.Many2one('res.partner', string='Customer',
                                  store=True,

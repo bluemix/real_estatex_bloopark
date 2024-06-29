@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="unresolved_complaint_print" model="ir.actions.report">
+        <field name="name">Print Complaint</field>
+        <field name="model">complaint.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">real_estatex_bloopark.print_complaint_ticket</field>
+        <field name="report_file">real_estatex_bloopark.print_complaint_ticket</field>
+        <field name="print_report_name">'Complaint: %s - %s' % (object.name.replace('/', ''), object.id)</field>
+        <field name="paperformat_id" ref="l10n_din5008.paperformat_euro_din"/>
+        <field name="binding_model_id" ref="model_complaint_ticket"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_complaint_ticket">
+        <t t-call="web.basic_layout">
+            <t t-set="company" t-value="docs.env.company"/>
+            <!--            <t t-set="skip_headers" t-value="True"/>-->
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="l10n_din5008.external_layout_din5008">
+                    <br/>
+                    This is a complaint that needs supervisions intervention. The followings are the complaint details:
+                    <br/><br/>
+                    <div class="col-6 mb92">
+                        <table class="table table-bordered"
+                               style="width:100%; border: 2px solid #fafafa">
+                            <thead>
+                                <tr>
+                                    <th>#id</th>
+                                    <th>Customer</th>
+                                    <th>Address</th>
+                                    <th>E-Mail</th>
+                                    <th>Type</th>
+                                    <th>Stage</th>
+                                    <th>Description</th>
+                                    <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border: 2px solid #fafafa">
+                                    <td><span t-field="doc.id"/></td>
+                                    <td><span t-field="doc.partner_id.name"/></td>
+                                    <td><span t-field="doc.partner_id.street"/></td>
+                                    <td><span t-field="doc.partner_id.email"/></td>
+                                    <td><span t-field="doc.complaint_type_id.name"/></td>
+                                    <td><span t-field="doc.stage_id.name"/></td>
+                                    <td><span t-field="doc.description"/></td>
+                                    <td><span t-field="doc.partner_id.mobile"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

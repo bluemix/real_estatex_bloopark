@@ -42,6 +42,21 @@
                                         </div>
                                     </div>
                                     <div class="mb-0 py-2 s_website_form_field col-12 s_website_form_required"
+                                         data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                   style="width: 200px" for="complaint_8">
+                                                <span class="s_website_form_label_content">Your Address</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input type="text" class="form-control s_website_form_input"
+                                                       name="partner_address" required="1"
+                                                       id="complaint_8"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-0 py-2 s_website_form_field col-12 s_website_form_required"
                                          data-type="email" data-name="Field">
                                         <div class="row s_col_no_resize s_col_no_bgcolor">
                                             <label class="col-form-label col-sm-auto s_website_form_label "
@@ -93,7 +108,8 @@
                                                 <span class="s_website_form_label_content">Complaint Type</span>
                                             </label>
                                             <div class="col-sm">
-                                                <select class="form-select s_website_form_input" name="Custom Text"
+                                                <select class="form-select s_website_form_input"
+                                                        name="Complaint Type"
                                                         id="complaint_5" style="">
                                                     <option value="option_general_question">General Question</option>
                                                     <option value="option_billing_issue">Billing Issue</option>

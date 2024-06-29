@@ -45,14 +45,10 @@
                             <field name="stage_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
                         </group>
                         <group>
-                            <field name="partner_id" class="field_partner_id" readonly="True"/>
-                            <label for="partner_email" string="Email"/>
-                            <div class="o_row o_row_readonly">
-                                <field name="partner_email" widget="email" string="email"/>
-                                <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
-                                      title="By saving this change, the customer email will also be updated."/>
-                            </div>
-                            <field name="partner_name"/>
+                            <field name="partner_id" readonly="True"/>
+                            <field name="partner_email" widget="email" readonly="True"/>
+                            <field name="partner_name"  readonly="True"/>
+                            <field name="partner_address"  readonly="True"/>
                         </group>
                     </group>
                     <field name="description" class="oe-bordered-editor field_description"
