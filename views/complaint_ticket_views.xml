@@ -56,8 +56,7 @@
                             <field name="complaint_type_id"
                                    options="{'no_quick_create': True, 'no_create_edit': True}"/>
                             <field name="stage_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                            <field name="description" class="oe-bordered-editor" style="max-height: 30px;"
-                                   placeholder="Description of the ticket..."/>
+
                         </group>
                         <group>
                             <field name="partner_id" readonly="True"/>
@@ -67,10 +66,17 @@
                         </group>
                     </group>
 
+                    <group class="mb-0 mt-4">
+                        <group>
+                            <field name="description" class="oe-bordered-editor"
+                                   placeholder="Description of the ticket..."/>
+                            <field name="action_plan" class="oe-bordered-editor"
+                                   placeholder="Action plan written here..."/>
+                        </group>
+                    </group>
+
                     <br/>
-                    <label for="action_plan" string="Action Plan"/>
-                    <field name="action_plan" class="oe-bordered-editor"
-                           placeholder="Action plan"/>
+
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>

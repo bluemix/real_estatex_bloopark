@@ -21,7 +21,7 @@ from odoo import fields, models
 
 
 class ComplaintStage(models.Model):
-    """ complaint stage will be used to specify at which state the complaint ticket is  """
+    """ complaint stage will be used to specify at which stage the complaint ticket is  """
     _name = 'complaint.stage'
     _description = 'Complaint Stage'
     _order = 'sequence, id'
@@ -30,3 +30,7 @@ class ComplaintStage(models.Model):
     name = fields.Char(required=True, translate=True)
     description = fields.Text(translate=True)
     sequence = fields.Integer('Sequence', default=10)
+
+    _sql_constraints = [
+        ('name_uniq', 'unique (name)', "Same name already exists."),
+    ]

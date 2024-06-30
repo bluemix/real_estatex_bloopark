@@ -13,7 +13,11 @@
                 <div>
                     Dear <t t-out="object.partner_id.name or ''">Salman Khan</t>,<br/><br/>
                     You ticket # <t t-out="object.id or ''">12345</t>
-                    has being processed and finished. If your complaint is still ongoing, please contact us again.<br/><br/>
+                    has being processed and finished.<br/>
+                    The action plan is <br/>
+                    <t t-out="object.action_plan or ''">action plan</t> <br/>
+
+                    If your complaint is still ongoing, please contact us again.<br/><br/>
                     Best Regards,<br/>
                     Your RealEstateX Team.<br/>
                 </div>
