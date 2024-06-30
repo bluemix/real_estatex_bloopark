@@ -40,7 +40,7 @@ The basic model here is the `complaint.ticket`, where most of the processing or 
 It inherits from `mail.thread`, because emails are sent from it multiple times.
 
 Generally, the `complaint.ticket` is linked to the following models:
-![models_structure.001.png](docs/models_structure/models_structure.001.png)
+![models_structure_001.png](docs/models_structure/models_structure_001.png)
 
 Each ticket is linked to a responsible/assignee (`res.user`), a stage (`complaint.stage`), a complaint type (`complaint.type`) 
 and a contact (`res.partner`).
@@ -81,7 +81,7 @@ at the backend and a success webpage is shown to the user:
 ### Backoffice
 
 Now, if you go to the _RealEstateX_ module, you'll the new submitted ticket, and its stage (usually it is
-the New stage -- the default Stage can be configured from the module Settings):
+the _New_ stage — the default Stage can be configured from the module Settings):
 
 <img src="docs/real_estatex_main.png">
 
