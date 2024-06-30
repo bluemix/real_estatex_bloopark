@@ -21,6 +21,7 @@ from odoo import fields, models
 
 
 class ComplaintStage(models.Model):
+    """ complaint stage will be used to specify at which state the complaint ticket is  """
     _name = 'complaint.stage'
     _description = 'Complaint Stage'
     _order = 'sequence, id'

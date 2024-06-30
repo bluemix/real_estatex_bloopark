@@ -1,9 +1,4 @@
-from werkzeug.exceptions import NotFound
-from werkzeug.utils import redirect
-
-from odoo import http, _
 from odoo.http import request
-from odoo.osv import expression
 
 from odoo.addons.website.controllers import form
 
@@ -15,6 +10,7 @@ _logger = logging.getLogger(__name__)
 class WebsiteForm(form.WebsiteForm):
 
     def _handle_website_form(self, model_name, **kwargs):
+        """ overridden to check customer email, and create a new `res.partner` based on it when not found """
         _logger.info(f'_handle_website_form, model_name: {model_name}')
         _logger.info(f'_handle_website_form, kwargs: {kwargs}')
         _logger.info(f'_handle_website_form, request.params: {request.params}')

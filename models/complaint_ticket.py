@@ -24,12 +24,14 @@ _logger = logging.getLogger(__name__)
 
 
 class ComplaintTicket(models.Model):
+    """ the main class for complaints tickets """
     _name = 'complaint.ticket'
     _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
     _primary_email = 'partner_email'
     _description = 'Complaint ticket'
 
     def _default_stage_id(self):
+        """ will select the default stage based on the existing stage from the configuration settings """
         COMPLAINT_STAGE = self.env['complaint.stage']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
         default_id = \
@@ -39,6 +41,7 @@ class ComplaintTicket(models.Model):
         return COMPLAINT_STAGE.search([('id', '=', default_id)], limit=1)
 
     def _default_assignee_id(self):
+        """ will select the default assignee based on the existing assignee from the configuration settings """
         RES_USERS = self.env['res.users']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
         default_id = \
@@ -48,16 +51,13 @@ class ComplaintTicket(models.Model):
         return RES_USERS.search([('id', '=', default_id)], limit=1)
 
     name = fields.Char(string='Subject', required=True, index=True, tracking=True)
-
     active = fields.Boolean(default=True)
-    description = fields.Html(sanitize_attributes=False)
+    description = fields.Html('Description', sanitize_attributes=False)
 
     user_id = fields.Many2one('res.users', string='Assigned to',
                               default=lambda self: self._default_assignee_id())
-
     stage_id = fields.Many2one('complaint.stage', string='Stage', index=True,
                                default=lambda self: self._default_stage_id())
-
     complaint_type_id = fields.Many2one('complaint.type', string='Type', tracking=True)
 
     partner_email = fields.Char(string='Customer Email', readonly=False)
@@ -68,8 +68,11 @@ class ComplaintTicket(models.Model):
                                  store=True,
                                  compute='_compute_partner_id', tracking=True)
 
+    action_plan = fields.Html('Action Plan', sanitize_attributes=False)
+
     @api.model_create_multi
     def create(self, vals_list):
+        """ overridden to send an email when a new ticket is created """
         _logger.info(f'create, vals_list: {vals_list}')
         _logger.info(f'create, self.env.context: {self.env.context}')
 

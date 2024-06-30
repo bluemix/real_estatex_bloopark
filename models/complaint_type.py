@@ -16,12 +16,11 @@
 #    If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from odoo import models, fields, api
-from odoo.addons.iap.tools import iap_tools
-from odoo import api, Command, fields, models, tools, _
+from odoo import fields, models
 
 
 class ComplaintType(models.Model):
+    """ complaint type will be used to specify complaint ticket type, e.g.: question or issue  """
     _name = 'complaint.type'
     _description = 'Complaint Type'
     _order = 'sequence, name'

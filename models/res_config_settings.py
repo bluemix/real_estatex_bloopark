@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _
+from odoo import fields, models, _
 
 
 class ResConfigSettings(models.TransientModel):
+    """ overridden to specify the selection of default `stage_id` and default responsible or `assignee` for the
+      `complaint.ticket` """
     _inherit = 'res.config.settings'
 
     def _default_stage_id(self):
@@ -18,17 +20,3 @@ class ResConfigSettings(models.TransientModel):
     assignee = fields.Many2one('res.users', 'Default Ticket Assignee',
                                config_parameter='real_estatex_bloopark.assignee',
                                help='Default responsible when a new complaint ticket is created')
-
-    # @api.model
-    # def get_values(self):
-    #     res = super(ResConfigSettings, self).get_values()
-    #     value = self.env['ir.config_parameter'].sudo().get_param('real_estatex_bloopark.stage_id')
-    #     res.update(default_stage_id=int(value))
-    #     return res
-    #
-    # @api.model
-    # def set_values(self):
-    #     res = super(ResConfigSettings, self).set_values()
-    #     self.env['ir.config_parameter'].set_param('real_estatex_bloopark.stage_id',
-    #                                               str(self.stage_id.id))
-    #     return res

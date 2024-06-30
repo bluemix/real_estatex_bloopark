@@ -19,7 +19,8 @@
                 <t t-call="l10n_din5008.external_layout_din5008">
                     <br/>
                     <p>
-                       This is a complaint that needs supervisions intervention. The followings are the complaint details:
+                        This is a complaint that needs supervisions intervention. The followings are the complaint
+                        details:
                     </p>
                     <br/>
                     <div class="col-6 mb92">
@@ -34,23 +35,37 @@
                                     <th>Type</th>
                                     <th>Stage</th>
                                     <th>Description</th>
+                                    <th>Date</th>
                                     <th>Mobile</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr style="border: 2px solid #fafafa">
                                     <td align="center" style="vertical-align:top"><span t-field="doc.id"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.partner_id.name"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.partner_id.street"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.partner_id.email"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.complaint_type_id.name"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.stage_id.name"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.partner_id.name"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.partner_id.street"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.partner_id.email"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.complaint_type_id.name"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.stage_id.name"/></td>
                                     <td align="center" style="vertical-align:top"><span t-field="doc.description"/></td>
-                                    <td align="center" style="vertical-align:top"><span t-field="doc.partner_id.mobile"/></td>
+                                    <td align="center" style="vertical-align:top"><span t-field="doc.create_date"/></td>
+                                    <td align="center" style="vertical-align:top"><span
+                                            t-field="doc.partner_id.mobile"/></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <br/>
+                    <p>
+                        The action plan is as follows: <br/>
+                        <span t-field="doc.action_plan"/>
+                    </p>
+                    <br/>
                 </t>
             </t>
         </t>
