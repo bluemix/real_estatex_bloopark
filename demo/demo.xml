@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--    Adding demo complaints-->
+        <record id="complaint_demo_new" model="complaint.ticket">
+            <field name="name">Noise Complaints</field>
+            <field name="partner_name">Carole Samaha</field>
+            <field name="partner_address">Address 1</field>
+            <field name="partner_email">carole@example.com</field>
+            <field name="description">The noise from the upstairs tenant is unbearable. The constant stomping and loud
+                music make it impossible for me to rest.
+            </field>
+            <field name="stage_id" ref="stage_new"/>
+        </record>
+
+        <record id="complaint_demo_in_review" model="complaint.ticket">
+            <field name="name">Maintenance Issues</field>
+            <field name="partner_name">Sofia Rodrigo</field>
+            <field name="partner_address">Address 2</field>
+            <field name="partner_email">sofia@example.com</field>
+            <field name="description">The management is unresponsive to our maintenance requests. The leaky faucet has
+                been broken for weeks, and we still haven't seen any action.
+            </field>
+            <field name="stage_id" ref="stage_in_review"/>
+        </record>
+
+        <record id="complaint_demo_in_progress" model="complaint.ticket">
+            <field name="name">Bed Bugs</field>
+            <field name="partner_name">Liam Salman</field>
+            <field name="partner_address">Address 3</field>
+            <field name="partner_email">lee@example.com</field>
+            <field name="description">I'm fed up with the bed bug infestation in this apartment. Despite multiple
+                treatments, the problem persists, and I'm at my wit's end.
+            </field>
+            <field name="stage_id" ref="stage_in_progress"/>
+        </record>
+
+        <record id="complaint_demo_solved" model="complaint.ticket">
+            <field name="name">Deposit Refund</field>
+            <field name="partner_name">Ava Abbass</field>
+            <field name="partner_address">Address 4</field>
+            <field name="partner_email">ava@example.com</field>
+            <field name="description">I'm still waiting for my security deposit refund. The landlord is claiming damages
+                that were already present when I moved in, and it's been months since I left.
+            </field>
+            <field name="stage_id" ref="stage_solved"/>
+        </record>
+
+        <record id="complaint_demo_dropped" model="complaint.ticket">
+            <field name="name">Lack of Communication</field>
+            <field name="partner_name">Ehan Haqqi</field>
+            <field name="partner_address">Address 5</field>
+            <field name="partner_email">ethan@example.com</field>
+            <field name="description">The property manager never responds to our concerns. We've had issues with the
+                heating system for weeks, and they just ignore our emails and calls.
+            </field>
+            <field name="stage_id" ref="stage_dropped"/>
+        </record>
+
+    </data>
+</odoo>

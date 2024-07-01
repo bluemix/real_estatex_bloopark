@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree string="Stages" default_order="sequence" create="false" delete="false" edit="false">
                 <field name="name"/>
-                <field name="active"/>
                 <field name="description"/>
                 <field name="sequence" />
             </tree>

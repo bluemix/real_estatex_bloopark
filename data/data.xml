@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo  noupdate="1">
     <!--    used with the website form when submitting complaints   -->
     <record id="real_estatex_bloopark.model_complaint_ticket" model="ir.model">
         <field name="website_form_access">True</field>

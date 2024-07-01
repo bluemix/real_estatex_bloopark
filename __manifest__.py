@@ -40,6 +40,9 @@
         'views/res_config_settings_views.xml',
         'report/print_complaint_ticket.xml',
     ],
+    'demo': [
+        'demo/demo.xml',
+    ],
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',
     'installable': True,
