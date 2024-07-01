@@ -9,7 +9,7 @@
             <xpath expr="//div[hasclass('settings')]" position="inside">
                 <div class="app_settings_block" data-string="real_estatex" string="RealEstateX"
                      data-key="realestatex">
-                    <h2>Stages</h2>
+                    <h2>Defaults</h2>
                     <div class="row mt16 o_settings_container">
                         <div class="col-md-12 col-xs-12 o_setting_box">
                             <div class="o_setting_right_pane">
