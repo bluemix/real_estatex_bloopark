@@ -36,16 +36,14 @@ class ComplaintsTests(HttpCase):
             'tz': 'Europe/Berlin',
             'groups_id': [(6, 0, cls.env.user.groups_id.ids)],
         })
-        # Settings = cls.env['res.config.settings'].with_user(cls._user.id)
-        # cls.config = Settings.create({})
+        cls.config_settings = cls.env['res.config.settings'].create({
+            'stage_id': cls.env['complaint.stage'].search([('sequence', '=', 0)]).id,
+            'assignee': cls._user.id
+        })
+        cls.config_settings.execute()
 
     def test_default_settings(self):
-        config_settings = self.env['res.config.settings'].create({
-            'stage_id': self.env['complaint.stage'].search([('sequence', '=', 0)]).id,
-            'assignee': self._user.id
-        })
-        config_settings.execute()
-        self.assertEqual(config_settings.stage_id.sequence, 0)
+        self.assertEqual(self.config_settings.stage_id.sequence, 0)
 
         _tom_partner = self.env['res.partner'].create({
             'name': 'Tom Scott',
@@ -57,11 +55,11 @@ class ComplaintsTests(HttpCase):
             'partner_id': _tom_partner.id,
         })
 
-        _logger.info(f'test_default_settings, config_settings.assignee: {config_settings.assignee.name}')
+        _logger.info(f'test_default_settings, config_settings.assignee: {self.config_settings.assignee.name}')
         _logger.info(f'test_default_settings, ticket1.user_id: {ticket1.user_id.name}')
 
-        self.assertEqual(config_settings.stage_id.id, ticket1.stage_id.id)
-        self.assertEqual(config_settings.assignee.id, ticket1.user_id.id)
+        self.assertEqual(self.config_settings.stage_id.id, ticket1.stage_id.id)
+        self.assertEqual(self.config_settings.assignee.id, ticket1.user_id.id)
 
     def test_website_complaint_submission(self):
         """ Complaints submission should be available to all users."""
@@ -76,6 +74,9 @@ class ComplaintsTests(HttpCase):
 
         # make sure ticket created and exists
         response = self.url_open('/website/form/complaint.ticket', data=_data)
+        _logger.info(f'test_website_complaint_submission, response: {response}')
+        _logger.info(f'test_website_complaint_submission, response.json(): {response.json()}')
+
         ticket = self.env['complaint.ticket'].browse(response.json().get('id'))
         self.assertTrue(ticket.exists())
 
