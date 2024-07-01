@@ -16,4 +16,4 @@
 #    If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import test_complaint_ticket_website_form
+from . import test_complaint_tickets

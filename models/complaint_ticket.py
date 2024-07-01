@@ -18,9 +18,6 @@
 ##############################################################################
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError
-import logging
-
-_logger = logging.getLogger(__name__)
 
 
 class ComplaintTicket(models.Model):
@@ -34,21 +31,21 @@ class ComplaintTicket(models.Model):
         """ will select the default stage based on the existing stage from the configuration settings """
         COMPLAINT_STAGE = self.env['complaint.stage']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
-        default_id = \
+        default_stage_id = \
             config_param_sudo.get_param('real_estatex_bloopark.stage_id', False)
-        if not default_id:
+        if not default_stage_id:
             raise UserError(_("Please assign a default stage from the module settings"))
-        return COMPLAINT_STAGE.search([('id', '=', default_id)], limit=1)
+        return COMPLAINT_STAGE.search([('id', '=', default_stage_id)], limit=1)
 
     def _default_assignee_id(self):
         """ will select the default assignee based on the existing assignee from the configuration settings """
         RES_USERS = self.env['res.users']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
-        default_id = \
+        default_assignee_id = \
             config_param_sudo.get_param('real_estatex_bloopark.assignee', False)
-        if not default_id:
+        if not default_assignee_id:
             raise UserError(_("Please assign a default assignee from the module settings"))
-        return RES_USERS.search([('id', '=', default_id)], limit=1)
+        return RES_USERS.search([('id', '=', default_assignee_id)], limit=1)
 
     name = fields.Char(string='Subject', required=True, index=True, tracking=True)
     active = fields.Boolean(default=True)
@@ -73,9 +70,6 @@ class ComplaintTicket(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         """ overridden to send an email when a new ticket is created """
-        _logger.info(f'create, vals_list: {vals_list}')
-        _logger.info(f'create, self.env.context: {self.env.context}')
-
         _tickets = super(ComplaintTicket, self).create(vals_list)
         for _ticket in _tickets:
             _ticket.send_email()

@@ -3,7 +3,7 @@
 
 RealEstateX
 =======================
-Developing a complaint form Odoo module for a real estate company in Germany that provides
+Developing a complaint website form Odoo module for a real estate company in Germany that provides
 a form on their website for tenants to submit complaints about their rented flats.
 These complaints will then be classified and dealt with by RealEstateX’s employees.
 
@@ -11,6 +11,7 @@ These complaints will then be classified and dealt with by RealEstateX’s emplo
 Installation
 =======================
 
+### Docker
 Git clone this repo into your custom `addons` path, then execute the following command line
 using Docker:
 ```docker
@@ -20,16 +21,16 @@ docker exec -it <odoo_container_id> bash -c "odoo -d <odoo_db_name> -i real_esta
 ### Running tests in a Docker container
 
 ```docker
-docker exec -it <odoo_container_id> bash -c "odoo -p <port> -d <db_name> -r <db_username> -w <db_password> --db_host=<db_host> --db_port=<db_port> -i real_estatex_bloopark  --test-enable --stop-after-init"
+docker exec -it <odoo_container_id> bash -c "odoo -p <port> -d <test_db_name> -r <db_username> -w <db_password> --db_host=<db_host> --db_port=<db_port> -i real_estatex_bloopark  --test-enable --stop-after-init"
 ```
 Example:
 
 ```docker
-docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init"
+docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init"
 ```
 or to execute specific test case example:
 ```docker
-docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init --test-tags /real_estatex_bloopark:ComplaintSubmissionWebsite.test_website_complaint_submission"
+docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init --test-tags /real_estatex_bloopark:ComplaintsTests.test_default_settings"
 ```
 
 Technical Documentation
@@ -67,8 +68,8 @@ User Documentation
 
 ### Website Form
 The process of creating and managing complaints starts when the user submits the complaint
-using the website form, where there will be a new _Complain_ button that is added at the top menu bar
-as shown:
+using the website form, where there will be a new _Complain_ button that is added to the main pages (next to _Contact us_)
+as shown here for example:
 
 <img src="docs/website_complaint_button.png">
 
