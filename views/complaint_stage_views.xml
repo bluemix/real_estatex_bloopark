@@ -49,5 +49,5 @@
     </record>
 
     <menuitem id="complaints_stages_menu" name="Stages" action="complaint_stage_action_main"
-              sequence="2" parent="real_estatex_bloopark.menu_complaints_root"/>
+              sequence="2" parent="real_estatex.menu_complaints_root"/>
 </odoo>

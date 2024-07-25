@@ -4,8 +4,8 @@
         <field name="name">Print Complaint</field>
         <field name="model">complaint.ticket</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">real_estatex_bloopark.print_complaint_ticket</field>
-        <field name="report_file">real_estatex_bloopark.print_complaint_ticket</field>
+        <field name="report_name">real_estatex.print_complaint_ticket</field>
+        <field name="report_file">real_estatex.print_complaint_ticket</field>
         <field name="print_report_name">'Complaint: %s - %s' % (object.name.replace('/', ''), object.id)</field>
         <field name="paperformat_id" ref="l10n_din5008.paperformat_euro_din"/>
         <field name="binding_model_id" ref="model_complaint_ticket"/>

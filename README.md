@@ -3,9 +3,12 @@
 
 RealEstateX
 =======================
-Developing a complaint website form Odoo module for a real estate company in Germany that provides
+Developing a website form module for a demo real estate company that provides
 a form on their website for tenants to submit complaints about their rented flats.
 These complaints will then be classified and dealt with by RealEstateX’s employees.
+
+This was an assignment task by Bloopark, but unfortunately didn't pass it, for reasons I didn't know about. It took
+one week for me to build this.
 
 
 Installation
@@ -15,22 +18,22 @@ Installation
 Git clone this repo into your custom `addons` path, then execute the following command line
 using Docker:
 ```docker
-docker exec -it <odoo_container_id> bash -c "odoo -d <odoo_db_name> -i real_estatex_bloopark"
+docker exec -it <odoo_container_id> bash -c "odoo -d <odoo_db_name> -i real_estatex"
 ```
 
 ### Running tests in a Docker container
 
 ```docker
-docker exec -it <odoo_container_id> bash -c "odoo -p <port> -d <test_db_name> -r <db_username> -w <db_password> --db_host=<db_host> --db_port=<db_port> -i real_estatex_bloopark  --test-enable --stop-after-init"
+docker exec -it <odoo_container_id> bash -c "odoo -p <port> -d <test_db_name> -r <db_username> -w <db_password> --db_host=<db_host> --db_port=<db_port> -i real_estatex  --test-enable --stop-after-init"
 ```
 Example:
 
 ```docker
-docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init"
+docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init"
 ```
 or to execute specific test case example:
 ```docker
-docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex_bloopark --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init --test-tags /real_estatex_bloopark:ComplaintsTests.test_default_settings"
+docker exec -it odoo16_community bash -c "odoo -p 5050 -d odoo16_db_test -r odoo -w odoo --db_host=db --db_port=5432 -i real_estatex --log-level=test --test-enable --stop-after-init --test-enable --stop-after-init --test-tags /real_estatex:ComplaintsTests.test_default_settings"
 ```
 
 Technical Documentation

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <record id="real_estatex_bloopark.mail_template_complaint_finished" model="mail.template">
+        <record id="real_estatex.mail_template_complaint_finished" model="mail.template">
             <field name="name">Complaint Finished</field>
-            <field name="model_id" ref="real_estatex_bloopark.model_complaint_ticket"/>
+            <field name="model_id" ref="real_estatex.model_complaint_ticket"/>
             <field name="subject">RealEstateX: Complaint Finished</field>
             <field name="email_from">{{ object.user_id.email_formatted }}</field>
             <field name="email_to">{{ object.partner_email }}</field>

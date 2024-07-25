@@ -41,5 +41,5 @@
     </record>
 
     <menuitem id="complaints_type_menu" name="Types" action="complaint_type_action_main"
-              sequence="3" parent="real_estatex_bloopark.menu_complaints_root"/>
+              sequence="3" parent="real_estatex.menu_complaints_root"/>
 </odoo>

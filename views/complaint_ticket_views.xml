@@ -2,7 +2,7 @@
     <!--    ROOT MENU   -->
     <menuitem id="menu_complaints_root" name="RealEstateX"
               sequence="90"
-              web_icon="real_estatex_bloopark,static/description/icon.svg"
+              web_icon="real_estatex,static/description/icon.svg"
               groups="base.group_user"/>
 
     <!--    COMPLAINT.TICKET VIEWS  -->
@@ -138,5 +138,5 @@
     </record>
 
     <menuitem id="complaints_ticket_menu" name="Complaints" action="complaint_ticket_action_main"
-              sequence="1" parent="real_estatex_bloopark.menu_complaints_root"/>
+              sequence="1" parent="real_estatex.menu_complaints_root"/>
 </odoo>

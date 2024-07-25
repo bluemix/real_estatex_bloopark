@@ -32,7 +32,7 @@ class ComplaintTicket(models.Model):
         COMPLAINT_STAGE = self.env['complaint.stage']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
         default_stage_id = \
-            config_param_sudo.get_param('real_estatex_bloopark.stage_id', False)
+            config_param_sudo.get_param('real_estatex.stage_id', False)
         if not default_stage_id:
             raise UserError(_("Please assign a default stage from the module settings"))
         return COMPLAINT_STAGE.search([('id', '=', default_stage_id)], limit=1)
@@ -42,7 +42,7 @@ class ComplaintTicket(models.Model):
         RES_USERS = self.env['res.users']
         config_param_sudo = self.env['ir.config_parameter'].sudo()
         default_assignee_id = \
-            config_param_sudo.get_param('real_estatex_bloopark.assignee', False)
+            config_param_sudo.get_param('real_estatex.assignee', False)
         if not default_assignee_id:
             raise UserError(_("Please assign a default assignee from the module settings"))
         return RES_USERS.search([('id', '=', default_assignee_id)], limit=1)
@@ -81,12 +81,12 @@ class ComplaintTicket(models.Model):
         for rec in self:
             if rec.stage_id.sequence == 0:
                 email_template_id = self.env['ir.model.data']._xmlid_to_res_id(
-                    'real_estatex_bloopark.mail_template_complaint_created', raise_if_not_found=False
+                    'real_estatex.mail_template_complaint_created', raise_if_not_found=False
                 )
                 rec.with_context(force_send=True).message_post_with_template(email_template_id)
             elif rec.stage_id.sequence == 4 or rec.stage_id.sequence == 3:
                 email_template_id = self.env['ir.model.data']._xmlid_to_res_id(
-                    'real_estatex_bloopark.mail_template_complaint_finished', raise_if_not_found=False
+                    'real_estatex.mail_template_complaint_finished', raise_if_not_found=False
                 )
                 rec.with_context(force_send=True).message_post_with_template(email_template_id)
 

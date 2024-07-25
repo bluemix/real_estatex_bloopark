@@ -30,10 +30,10 @@ class ResConfigSettings(models.TransientModel):
             or self.env['complaint.stage'].search([], limit=1)
 
     stage_id = fields.Many2one('complaint.stage', 'Default Complaint Stage',
-                               config_parameter='real_estatex_bloopark.stage_id',
+                               config_parameter='real_estatex.stage_id',
                                default=lambda self: self._default_stage_id(),
                                help='Default stage used when creating new complain tickets')
 
     assignee = fields.Many2one('res.users', 'Default Ticket Assignee',
-                               config_parameter='real_estatex_bloopark.assignee',
+                               config_parameter='real_estatex.assignee',
                                help='Default responsible when a new complaint ticket is created')
