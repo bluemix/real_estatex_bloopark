@@ -10,6 +10,17 @@ These complaints will then be classified and dealt with by RealEstateX’s emplo
 This was an assignment task by Bloopark, but unfortunately didn't pass it, for reasons I didn't know about. It took
 one week for me to build this.
 
+What technical features does this module provides:
+* website customization
+  * handling form submission data at the backend
+* kanban viewing
+* printing (pdf export)
+* loading demo data
+* setting predefined data
+* sending e-mail
+* adding settings configurations
+* testing
+
 
 Installation
 =======================
